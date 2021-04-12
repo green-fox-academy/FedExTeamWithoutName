@@ -82,12 +82,14 @@ body {
 }
 
 .registerForm button {
-  color: #494949 !important;
+  color: whitesmoke !important;
+  border-radius: 3px;
   text-transform: uppercase;
   text-decoration: none;
   background: #ffffff;
   padding: 10px;
-  border: 3px solid #494949 !important;
+  background-color: black;
+  border: 2px solid whitesmoke !important;
   display: inline-block;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
@@ -97,9 +99,10 @@ body {
 }
 
 .registerForm button:hover {
-  color: #ffffff !important;
-  background: #4d4c4c;
-  border-color: #4d4c4c !important;
+  color: #000000 !important;
+  background: whitesmoke;
+  border-color: #000000 !important;
+  font-size: 105%;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
 }

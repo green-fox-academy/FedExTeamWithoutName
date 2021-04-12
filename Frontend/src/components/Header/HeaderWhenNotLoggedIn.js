@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderButton from './HeaderButton';
 import logo from '../../assets/images/baselogo.png'
+
 const HeaderWhenNotLoggedIn = () => {
   
   return(
