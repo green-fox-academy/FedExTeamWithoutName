@@ -1,0 +1,62 @@
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin spaceBetween {
+  justify-content: space-between;
+}
+@mixin spaceEvenly {
+  justify-content: space-evenly;
+}
+@mixin centerElement {
+  margin: { 
+    left: auto;
+    right: auto;
+}
+}
+
+@mixin basicButton {
+    color: #494949 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 10px;
+    border: 3px solid #494949 !important;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    margin:2%;
+}
+
+@mixin basicButtonHover {
+    color: #ffffff !important;
+    background: #4d4c4c;
+    border-color: #4d4c4c !important;
+    transition: all 0.4s ease 0s;
+}
+
+// forms
+
+@mixin forms {
+    width:60%;
+    justify-content: center;
+    flex-direction:column;
+    height:400px;
+}
+
+@mixin formInput {
+    padding:15px;
+    margin:2%;
+}
+
+@mixin formTitle {
+    margin-left: 5%;
+    margin-bottom: 15%;
+}
+
+@mixin iconPlacement {
+  display:flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,43 @@
+@import './presets';
+@import './variables';
+@import './globals';
+
+.loginBox {
+    margin-top:10vh;
+    display:flex;
+    width: $formwidth;
+    justify-content: flex-end;
+    box-shadow:$box-shadow-light;
+    background-color: $formbackground;
+    @include centerElement;
+}
+
+.loginForm {
+    @include flexCenter;
+    @include forms;
+
+    button {
+        @include basicButton;
+        position:relative;
+        left:7.5px;
+    }
+
+    button:hover {
+        @include basicButtonHover;
+    }
+
+    .loginTitle {
+        align-self: flex-start;
+        @include formTitle;
+    }
+
+    input {
+        @include formInput;
+    }
+    .iconHolder {
+        @include iconPlacement;
+        .icon{
+            width:15px;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@import './presets';
+@import './variables';
+@import './globals';
+
+.registerBox {
+    margin-top:10vh;
+    display:flex;
+    width: $formwidth;
+    justify-content: flex-start;
+    box-shadow:$box-shadow-light;
+    background-color: $formbackground;
+    @include centerElement;
+}
+
+.registerForm {   
+    @include flexCenter;
+    @include forms;
+
+    button {
+        @include basicButton;
+        position:relative;
+        left:7.5px;
+    }
+
+    button:hover {
+        @include basicButtonHover;
+    }
+
+    .registerTitle {
+        align-self: flex-start;
+        @include formTitle;
+        margin-bottom: 20px;
+    }
+
+    input {
+        @include formInput;
+    }
+
+    .iconHolder {
+        @include iconPlacement;
+        .icon{
+            width:15px;
+        }
+    }
+}

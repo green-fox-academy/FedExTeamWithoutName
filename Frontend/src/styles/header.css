@@ -1,0 +1,46 @@
+.header-button {
+  color: #494949 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 10px;
+  border: 3px solid #494949 !important;
+  display: inline-block;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  margin: 2%;
+  width: 120%;
+  margin-right: 10%;
+  -ms-flex-negative: 3;
+      flex-shrink: 3;
+}
+
+.header-button:hover {
+  color: #ffffff !important;
+  background: #4d4c4c;
+  border-color: #4d4c4c !important;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#header-logged-out-button-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 20%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+.logoImg {
+  position: absolute;
+  left: 5%;
+  top: 1%;
+}
+/*# sourceMappingURL=header.css.map */

@@ -1,0 +1,26 @@
+@import './presets';
+
+.header-button {
+  @include basicButton;
+  width:120%;
+  margin-right:10%;
+  flex-shrink: 3;
+}
+
+.header-button:hover {
+  @include basicButtonHover
+}
+
+#header-logged-out-button-box {
+  @include flexCenter; 
+  @include spaceEvenly;
+  width:20%;
+  margin-right:5%;
+  margin-top:2%;
+}
+
+.logoImg {
+  position:absolute;
+  left: 5%;
+  top: 1%;
+}
