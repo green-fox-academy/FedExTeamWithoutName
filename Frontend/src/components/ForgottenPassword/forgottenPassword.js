@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { fetchService } from '../../services'
 import '../../styles/registerForm.css';
-import formImage from '../../assets/images/formImage.jpg'
+import formImage from '../../assets/images/emailimg.png'
 
 
 const ForgottenPassword = () => {
