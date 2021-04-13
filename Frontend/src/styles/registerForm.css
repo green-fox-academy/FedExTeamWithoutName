@@ -47,6 +47,11 @@ body {
           align-items: center;
 }
 
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 .registerBox {
   margin-top: 10vh;
   display: -webkit-box;
@@ -79,6 +84,8 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 400px;
+  -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+  animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
 }
 
 .registerForm button {
@@ -94,6 +101,7 @@ body {
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
   margin: 2%;
+  font-weight: 800;
   position: relative;
   left: 7.5px;
 }
@@ -102,7 +110,6 @@ body {
   color: #000000 !important;
   background: whitesmoke;
   border-color: #000000 !important;
-  font-size: 105%;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
 }
@@ -112,6 +119,11 @@ body {
       align-self: flex-start;
   margin-left: 5%;
   margin-bottom: 15%;
+  font-weight: 800;
+  border: 2px solid black;
+  text-transform: uppercase;
+  padding-left: 1%;
+  padding-right: 1%;
   margin-bottom: 20px;
 }
 
@@ -135,5 +147,64 @@ body {
 
 .registerForm .iconHolder .icon {
   width: 15px;
+}
+
+.registerFormImg {
+  max-width: 65vh;
+  max-height: 75vh;
+  -webkit-animation: slide-in-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-600px);
+    transform: translateX(-600px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-600px);
+    transform: translateX(-600px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes flip-in-hor-bottom {
+  0% {
+    -webkit-transform: rotateX(80deg);
+    transform: rotateX(80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flip-in-hor-bottom {
+  0% {
+    -webkit-transform: rotateX(80deg);
+    transform: rotateX(80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=registerForm.css.map */

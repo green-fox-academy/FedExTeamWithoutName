@@ -28,14 +28,18 @@
     display: inline-block;
     transition: all 0.4s ease 0s;
     margin:2%;
+    font-weight:800;
 }
 
 @mixin basicButtonHover {
     color: #000000 !important;
     background: whitesmoke;
     border-color: #000000 !important;
-    font-size: 105%;
     transition: all 0.4s ease 0s;
+}
+
+@mixin basicButtonActive {
+  filter: drop-shadow(1px 1px 4px rgb(243, 230, 52));
 }
 
 // forms
@@ -55,6 +59,11 @@
 @mixin formTitle {
     margin-left: 5%;
     margin-bottom: 15%;
+    font-weight:800;
+    border:2px solid black;
+    text-transform: uppercase;
+    padding-left:1%;
+    padding-right:1%;
 }
 
 @mixin iconPlacement {
