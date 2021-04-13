@@ -28,7 +28,6 @@ func CreateMeme(c *gin.Context) {
 			return
 		}
 
-		// url validation
 		if !urlValidation.IsValidUrl(memeUrl.MemeURL) {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": memeUrl.MemeURL + "is not a valid URL"})
 			return
