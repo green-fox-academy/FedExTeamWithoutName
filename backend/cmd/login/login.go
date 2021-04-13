@@ -46,7 +46,7 @@ func LoginFunction(c *gin.Context) {
 	} else {
 
 		var userFromDB User
-		if err := db.QueryRow("SELECT userID, username, password, isVerified FROM users WHERE username = (?);", userFromWeb.Username).Scan(&userFromDB.ID, &userFromDB.Username, &userFromDB.Password, &userFromDB.isVerified); err != nil {
+		if err := db.QueryRow("SELECT id, username, password, is_verified FROM users WHERE username = (?);", userFromWeb.Username).Scan(&userFromDB.ID, &userFromDB.Username, &userFromDB.Password, &userFromDB.isVerified); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "database error3"})
 			return
 		}

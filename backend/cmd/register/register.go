@@ -94,7 +94,7 @@ func RegisterTheUser(c *gin.Context) {
 		insData.Exec(user.Username, hashedPassword, user.Email)
 
 		var userResult UserForResult
-		if err := db.QueryRow("SELECT userID, username FROM users WHERE userID = LAST_INSERT_ID();").Scan(&userResult.Id, &userResult.Username); err != nil {
+		if err := db.QueryRow("SELECT id, username FROM users WHERE id = LAST_INSERT_ID();").Scan(&userResult.Id, &userResult.Username); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "database error3"})
 			return
 		}

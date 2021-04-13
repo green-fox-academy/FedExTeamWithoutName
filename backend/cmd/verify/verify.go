@@ -35,7 +35,7 @@ func VerifyUserByEmail(c *gin.Context)  {
 	} else {
 		db := dbConn.DbConn()
 
-		updData, err := db.Prepare("UPDATE users SET isVerified=1 WHERE userID=(?);") 
+		updData, err := db.Prepare("UPDATE users SET is_verified=1 WHERE id=(?);") 
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "database error"})
 			return
