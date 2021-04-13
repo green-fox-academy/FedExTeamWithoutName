@@ -130,6 +130,7 @@ a, a:hover, a:focus, a:active {
 .registerForm input {
   padding: 15px;
   margin: 2%;
+  width: 50%;
 }
 
 .registerForm .iconHolder {
