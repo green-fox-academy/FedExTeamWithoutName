@@ -130,6 +130,7 @@ a, a:hover, a:focus, a:active {
 .loginForm input {
   padding: 15px;
   margin: 2%;
+  width: 50%;
 }
 
 .loginForm .iconHolder {
