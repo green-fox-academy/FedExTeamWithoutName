@@ -8,6 +8,7 @@ import Login from './components/Login/Login';
 import Main from './components/Main/Main';
 import NotFound from './components/NotFound/NotFound';
 import ForgottenPassword from './components/ForgottenPassword/forgottenPassword';
+import Upload from './components/Upload/Upload'
 const App = () => {
   return (
     <Router>
@@ -19,6 +20,7 @@ const App = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/forgotten" component={ForgottenPassword} />
+          <Route exact path="/upload" component={Upload} />
           <Route path="*" component={NotFound} />
         </Switch>
       </div>
