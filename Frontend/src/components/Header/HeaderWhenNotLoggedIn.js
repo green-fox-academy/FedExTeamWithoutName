@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HeaderButton from './HeaderButton';
-import logo from '../../assets/images/baselogo.png'
+import lightbulb from '../../assets/images/lightbulb.png'
 
 const HeaderWhenNotLoggedIn = () => {
   
   return(
-    <div className="flex flex-jc-flex-end"><div className="logoImg"><img src={logo} alt="logo"></img></div>
+    <div className="flex flex-jc-flex-end"><Link to="/"><div className="logoHolder"><img className="lightbulb" src={lightbulb} alt="lightbulb"></img></div></Link>
       <div id="header-logged-out-button-box">
         <HeaderButton path="/login" innerText="Log in"/>
         <HeaderButton path="/register" innerText="Sign up"/>

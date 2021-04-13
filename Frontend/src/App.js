@@ -7,7 +7,7 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Main from './components/Main/Main';
 import NotFound from './components/NotFound/NotFound';
-
+import ForgottenPassword from './components/ForgottenPassword/forgottenPassword';
 const App = () => {
   return (
     <Router>
@@ -18,6 +18,7 @@ const App = () => {
           <Route exact path="/main" component={Main} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/forgotten" component={ForgottenPassword} />
           <Route path="*" component={NotFound} />
         </Switch>
       </div>

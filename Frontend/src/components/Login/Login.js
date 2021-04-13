@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { fetchService } from '../../services';
-import formImage from '../../assets/images/formImage.png'
+import { Link } from 'react-router-dom';
+import formImage from '../../assets/images/formImage.jpg'
 import '../../styles/loginForm.css';
 
 
@@ -26,9 +27,9 @@ const Login = () => {
 
   return (
     <div className="loginBox">
-     <img className="loginFormImage" src={formImage} alt="Login Form" height="400px"></img>
+     <img className="loginFormImg" src={formImage} alt="Login Form" height="400px"></img>
       <form className="loginForm" onSubmit={handleSubmit}>
-         <h1 className="loginTitle">Login</h1>
+         <h1 className="loginTitle">SIGN IN</h1>
          <div className="iconHolder">
           <i className="fa fa-user icon">
               </i>
@@ -60,8 +61,9 @@ const Login = () => {
           />
           </div>
           {error && (<div>{error}</div>)}
-          <button type="submit">LOG IN</button>
+          <button type="submit">SIGN IN</button>   
         </form>
+        <Link to="/forgotten"><p className="forgottenPassword">Forgot your password?</p></Link>
     </div>
   );
 };
