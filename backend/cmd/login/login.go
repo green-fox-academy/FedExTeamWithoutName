@@ -67,6 +67,6 @@ func LoginFunction(c *gin.Context) {
 			c.JSON(http.StatusUnprocessableEntity, err.Error())
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"status": "ok", "token": token})
+		c.JSON(http.StatusOK, gin.H{"status": "ok", "token": token, "userId": userFromDB.ID})
 	}
 }

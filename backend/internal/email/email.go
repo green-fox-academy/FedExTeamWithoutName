@@ -18,7 +18,7 @@ func SendVerifyEmail(name string, token string, toEmail string){
 
     mg := mailgun.NewMailgun(os.Getenv("mailgunDomain"),os.Getenv("mailgunApiKey"))
     m := mg.NewMessage(
-        name + ` <valami@valami.com>`,
+        name + ` <noreply@memeonthego.com>`,
         "Hello",
         "",
         toEmail,

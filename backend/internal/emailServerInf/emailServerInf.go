@@ -18,7 +18,7 @@ func SendServerInf(name string, toEmail string , serverAddress string, serverPas
 
     mg := mailgun.NewMailgun(os.Getenv("mailgunDomain"),os.Getenv("mailgunApiKey"))
     m := mg.NewMessage(
-        name + ` <valami@valami.com>`,
+        name + ` <noreply@memeonthego.com>`,
         "Hello",
         "",
         toEmail,
