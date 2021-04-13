@@ -1,12 +1,13 @@
 package register
 
 import (
-	"net/http"
+	"meme/cmd/dbConn"
+	"meme/internal/email"
 	"meme/internal/emailValidation"
 	"meme/internal/hash"
 	"meme/internal/jwt"
-	"meme/cmd/dbConn"
-	"meme/internal/email"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
