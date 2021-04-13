@@ -57,7 +57,7 @@ a, a:hover, a:focus, a:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 60%;
+  width: 922px;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -75,7 +75,7 @@ a, a:hover, a:focus, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 60%;
+  min-width: 493px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -151,8 +151,6 @@ a, a:hover, a:focus, a:active {
 }
 
 .registerFormImg {
-  max-width: 65vh;
-  max-height: 75vh;
   -webkit-animation: slide-in-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-in-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
