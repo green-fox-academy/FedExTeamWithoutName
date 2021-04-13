@@ -1,41 +1,29 @@
 package verify
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/gbrlsnchs/jwt/v3"
-	"net/http"
+	"fmt"
 	"meme/cmd/dbConn"
-	"github.com/joho/godotenv"
-	"os"
-	"log"
+	"meme/internal/jwt"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type CustomPayload struct {
-
-	User_id int  `json:"user_id"`
+	User_id int `json:"user_id"`
 }
 
-func VerifyUserByEmail(c *gin.Context)  {
-	token := c.Query("token")
+func VerifyUserByEmail(c *gin.Context) {
 
-	envError := godotenv.Load("../../.env")
-	if envError != nil {
-		log.Fatalf("Error loading .env file")
-	}
-
-	var payload CustomPayload
-	tokenSecretKey := os.Getenv("tokenSecretKey")
-
-	hs := jwt.NewHS256([]byte(tokenSecretKey))
-
-	_, err := jwt.Verify([]byte(token), hs, &payload)
+	payload, err := jwt.VerifyToken(c)
 
 	if err != nil {
+		fmt.Println(err)
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are not authorized!"})
 	} else {
 		db := dbConn.DbConn()
 
-		updData, err := db.Prepare("UPDATE users SET is_verified=1 WHERE id=(?);") 
+		updData, err := db.Prepare("UPDATE users SET is_verified=1 WHERE id=(?);")
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "database error"})
 			return

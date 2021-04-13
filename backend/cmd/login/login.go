@@ -1,17 +1,17 @@
 package login
 
 import (
-	"net/http"
 	"meme/cmd/dbConn"
 	"meme/internal/hash"
 	"meme/internal/jwt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type User struct {
 	ID         uint64 `json:"id"`
-	Username   string `json:"username"`
+	Username   string `json:"userName"`
 	Password   string `json:"password"`
 	isVerified uint
 }
