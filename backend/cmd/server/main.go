@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"meme/cmd/create"
 	"meme/cmd/forgottenPass"
 	"meme/cmd/login"
 	"meme/cmd/register"
@@ -22,7 +23,7 @@ func main() {
 	router.POST("/login", login.LoginFunction)
 	router.GET("/verify", verify.VerifyUserByEmail)
 	router.POST("/forgottenpass", forgottenPass.ForgottenPass)
-	//router.POST("/creatememe", create.CreateMeme)
+	router.POST("/creatememe", create.CreateMeme)
 	router.POST("switchfeedactivity", switchFeedactivity.SwitchFeedActivity)
 	router.GET("/feed")
 	router.GET("/mymemes")
