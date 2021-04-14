@@ -16,7 +16,7 @@ type ReactionData struct {
 
 type MemeData struct {
 	Id               uint64         `json:"id"`
-	UserId           uint64         `json:"userId"`
+	Username         string         `json:"username"`
 	MemeUrl          string         `json:"memeUrl"`
 	NumberOfComments uint64         `json:"numberOfComments"`
 	Reactions        []ReactionData `json:"reactions"`
@@ -24,8 +24,8 @@ type MemeData struct {
 
 func GetAllPublicMemes(c *gin.Context) {
 	db := dbConn.DbConn()
-
-	rowsForMemes, err := db.Query("SELECT memes.id, memes.user_id, meme_url, COUNT(meme_id) AS 'NumOfComments' FROM memes LEFT JOIN comments ON memes.id=comments.meme_id WHERE is_public=1 GROUP BY memes.id;")
+ // "SELECT memes.id, memes.user_id, meme_url, COUNT(meme_id) AS 'NumOfComments' FROM memes LEFT JOIN comments ON memes.id=comments.meme_id WHERE is_public=1 GROUP BY memes.id;"
+	rowsForMemes, err := db.Query("SELECT memes.id, username, meme_url, COUNT(meme_id) AS 'NumOfComments' FROM users JOIN (memes LEFT JOIN comments ON memes.id=comments.meme_id) ON users.id=memes.user_id WHERE is_public=1 GROUP BY memes.id;")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error1": err})
 		return
@@ -64,7 +64,7 @@ func GetAllPublicMemes(c *gin.Context) {
 	for rowsForMemes.Next() {
 
 		var memeData MemeData
-		err := rowsForMemes.Scan(&memeData.Id, &memeData.UserId, &memeData.MemeUrl, &memeData.NumberOfComments)
+		err := rowsForMemes.Scan(&memeData.Id, &memeData.Username, &memeData.MemeUrl, &memeData.NumberOfComments)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"errorScan1": err})
 			return
