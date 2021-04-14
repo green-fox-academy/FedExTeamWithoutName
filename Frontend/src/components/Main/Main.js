@@ -7,7 +7,7 @@ const Main = () => {
 
   return (
     <div id="main">
-      <h1>HELLO</h1>
+      <h1>MEME FEED</h1>
       <Switch>
         <Redirect exact from="/main" to="/main/memefeed" />
         <Route path="/main/memefeed" component={MemeFeed} />
