@@ -1,0 +1,33 @@
+.meme {
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  width: 350px;
+  height: 350px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#meme-img-box {
+  height: 260px;
+  padding: 10px 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+#meme-img-box img {
+  height: 100%;
+}
+
+#meme-text-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+#meme-reactions {
+  display: flex;
+  gap: 10px;
+}
