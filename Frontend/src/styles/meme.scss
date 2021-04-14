@@ -9,10 +9,20 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.meme:hover {
+ background-color:whitesmoke;
+ color:black;
+ outline:5px solid black;
+ #meme-img-box{
+   background-color:black;
+ }
+}
 
 #meme-img-box {
-  height: 260px;
-  padding: 10px 0;
+  align-self:center;
+  height: 270px;
+  width:max-content;
+  padding: 10px 10px;
   background-color: white;
   display: flex;
   justify-content: center;

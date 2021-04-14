@@ -17,9 +17,24 @@
           justify-content: space-between;
 }
 
+.meme:hover {
+  background-color: whitesmoke;
+  color: black;
+  outline: 5px solid black;
+}
+
+.meme:hover #meme-img-box {
+  background-color: black;
+}
+
 #meme-img-box {
-  height: 260px;
-  padding: 10px 0;
+  -ms-flex-item-align: center;
+      align-self: center;
+  height: 270px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 10px 10px;
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
