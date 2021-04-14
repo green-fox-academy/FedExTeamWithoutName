@@ -2,10 +2,11 @@ package dbConn
 
 import (
 	"database/sql"
+	"log"
+	"os"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
-	"os"
-	"log"
 )
 
 func DbConn() (db *sql.DB) {
