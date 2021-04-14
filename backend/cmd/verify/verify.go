@@ -32,6 +32,7 @@ func VerifyUserByEmail(c *gin.Context) {
 		updData.Exec(payload.User_id)
 
 		c.JSON(http.StatusOK, gin.H{"message": "ok"})
+		return
 	}
 
 }
