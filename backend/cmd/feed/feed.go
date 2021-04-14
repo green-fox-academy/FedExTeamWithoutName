@@ -1,7 +1,6 @@
 package feed
 
 import (
-	"fmt"
 	"meme/cmd/dbConn"
 	"net/http"
 
@@ -44,13 +43,11 @@ func GetAllPublicMemes(c *gin.Context) {
 		var reactionData ReactionData
 		err2 := rowsForReactions.Scan(&reactionData.MemeId, &reactionData.ReactionId, &reactionData.ReactionCount)
 		if err2 != nil {
-			fmt.Println((err2))
 			c.JSON(http.StatusInternalServerError, gin.H{"errorScan2": err2})
 			return
 		}
 
 		reactionDataArray = append(reactionDataArray, reactionData)
-		fmt.Println(reactionData)
 
 	}
 	err = rowsForReactions.Err()
@@ -75,7 +72,6 @@ func GetAllPublicMemes(c *gin.Context) {
 			}
 
 		}
-		fmt.Println(memeData)
 
 		allMemeData = append(allMemeData, memeData)
 	}
