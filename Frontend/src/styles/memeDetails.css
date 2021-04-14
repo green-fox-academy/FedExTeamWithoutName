@@ -45,6 +45,8 @@
   height: 500px;
   padding: 10px;
   background-color: white;
+  position: relative;
+  bottom: 5px;
 }
 
 #reaction-box {
@@ -63,6 +65,8 @@
 
 #owner-text {
   color: white;
+  font-weight: 600;
+  font-size: 150%;
 }
 
 .reaction-text {
@@ -91,12 +95,16 @@
   background-color: white;
   overflow: scroll;
   padding: 10px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 5px;
 }
 
 #comment-text {
   background-color: #e4e4e4;
   border: solid 1px #b3b3b3;
   padding: 5px;
+  border-radius: 8px;
 }
 
 #comment-form {
@@ -110,8 +118,12 @@
 }
 
 #commentinput {
-  height: 60px;
+  height: 70px;
   resize: none;
+  outline: none;
+  position: relative;
+  top: 3px;
+  border-radius: 5px;
 }
 
 #comment-form button {
@@ -133,6 +145,10 @@
   width: fit-content;
   -ms-flex-item-align: end;
       align-self: flex-end;
+  margin-bottom: 0px;
+  position: relative;
+  top: 5px;
+  left: 10px;
 }
 
 #comment-form button:hover {

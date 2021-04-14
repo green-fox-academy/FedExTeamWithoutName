@@ -51,4 +51,18 @@ a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
 }
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: gray;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #e7e7e7;
+  border-radius: 3px;
+  border: 2px solid #333030;
+}
 /*# sourceMappingURL=App.css.map */

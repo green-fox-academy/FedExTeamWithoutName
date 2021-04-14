@@ -35,3 +35,17 @@ a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
 }
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(128, 128, 128);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(231, 231, 231);
+  border-radius: 3px;
+  border: 2px solid rgb(51, 48, 48);
+}
