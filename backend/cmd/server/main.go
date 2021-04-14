@@ -5,6 +5,7 @@ import (
 	"meme/cmd/forgottenPass"
 	"meme/cmd/login"
 	"meme/cmd/register"
+	"meme/cmd/switchFeedactivity"
 	"meme/cmd/verify"
 
 	"github.com/gin-gonic/contrib/static"
@@ -22,6 +23,7 @@ func main() {
 	router.GET("/verify", verify.VerifyUserByEmail)
 	router.POST("/forgottenpass", forgottenPass.ForgottenPass)
 	//router.POST("/creatememe", create.CreateMeme)
+	router.POST("switchfeedactivity", switchFeedactivity.SwitchFeedActivity)
 	router.GET("/feed")
 	router.GET("/mymemes")
 	router.GET("/meme")

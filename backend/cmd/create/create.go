@@ -1,34 +1,37 @@
 package create
 
 import (
-	"net/http"
 	"meme/cmd/dbConn"
 	"meme/internal/jwt"
+	"meme/internal/urlValidation"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type Memeurl struct {
-	MemeURL   string `json:"memeurl"`
+	MemeURL string `json:"memeurl"`
 }
 
 func CreateMeme(c *gin.Context) {
 
-	// jwt verify
-	// get user id from payload
-	
+	payload, err := jwt.VerifyToken(c)
+
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are not authorized!"})
 	} else {
 
-		var url Memeurl
+		var memeUrl Memeurl
 
-		if err := c.ShouldBindJSON(&url); err != nil {
+		if err := c.ShouldBindJSON(&memeUrl); err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"message": "Invalid JSON provided."})
 			return
 		}
 
-		// url validation
+		if !urlValidation.IsValidUrl(memeUrl.MemeURL) {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": memeUrl.MemeURL + "is not a valid URL"})
+			return
+		}
 
 		db := dbConn.DbConn()
 
@@ -38,8 +41,9 @@ func CreateMeme(c *gin.Context) {
 			return
 		}
 
-		insData.Exec(url.MemeURL, payload.userId)
+		insData.Exec(memeUrl.MemeURL, payload.User_id)
 
 		c.JSON(http.StatusOK, gin.H{"message": "ok"})
+		return
 	}
 }
