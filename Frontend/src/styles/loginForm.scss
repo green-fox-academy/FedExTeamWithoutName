@@ -60,7 +60,74 @@
     -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
 	        animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
 }
+@media screen and (max-width: 880px) {
+  .loginBox {
+    margin-top:10vh;
+    display:flex;
+    width: 300px;
+    justify-content: center;
+    box-shadow:$box-shadow-light;
+    background-color: $formbackground;
+}
 
+.loginForm {   
+    @include flexCenter;
+    @include forms;
+    -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
+	        animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
+
+    button {
+        @include basicButton;
+        position:relative;
+        left:35px;
+    }
+
+    button:hover {
+        @include basicButtonHover;
+    }
+
+    .loginTitle {
+        align-self: center;
+        @include formTitle;
+        margin-bottom: 20px;
+        margin-left:75px;
+    }
+
+    input {
+        @include formInput;
+        position:relative;
+        left:20px;
+        margin-left:0;
+        width:200px;
+    }
+
+    .iconHolder {
+        @include iconPlacement;
+        position:relative;
+        left:20px;
+        .icon{
+            width:10px;
+        }
+    }
+}
+.loginFormImg {
+  display:none;
+  -webkit-animation: slide-in-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-in-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.forgottenPassword {
+  text-decoration: underline;
+  font-weight:300;
+  font-size:70%;
+  position:relative;
+  top:320px;
+  left:-120px;
+  margin:0;
+  margin-right:20px;
+  -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
+        animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
+}
+}
 //Animations
 
 @-webkit-keyframes slide-in-right {

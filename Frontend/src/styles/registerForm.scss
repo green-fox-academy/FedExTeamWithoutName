@@ -51,6 +51,56 @@
 	        animation: slide-in-left 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
+@media screen and (max-width: 880px) {
+  .registerBox {
+    margin-top:10vh;
+    display:flex;
+    width: 300px;
+    justify-content: center;
+    box-shadow:$box-shadow-light;
+    background-color: $formbackground;
+}
+
+.registerForm {   
+    @include flexCenter;
+    @include forms;
+    -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
+	        animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
+
+    button {
+        @include basicButton;
+        position:relative;
+        left:7.5px;
+    }
+
+    button:hover {
+        @include basicButtonHover;
+    }
+
+    .registerTitle {
+        align-self: center;
+        @include formTitle;
+        margin-bottom: 20px;
+    }
+
+    input {
+        @include formInput;
+    }
+
+    .iconHolder {
+        @include iconPlacement;
+        .icon{
+            width:15px;
+        }
+    }
+}
+
+.registerFormImg {
+  display:none;
+    -webkit-animation: slide-in-left 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-left 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+}
 //Animations
 
 @-webkit-keyframes slide-in-left {
