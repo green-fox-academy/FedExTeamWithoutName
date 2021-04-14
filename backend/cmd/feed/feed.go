@@ -24,7 +24,6 @@ type MemeData struct {
 
 func GetAllPublicMemes(c *gin.Context) {
 	db := dbConn.DbConn()
- // "SELECT memes.id, memes.user_id, meme_url, COUNT(meme_id) AS 'NumOfComments' FROM memes LEFT JOIN comments ON memes.id=comments.meme_id WHERE is_public=1 GROUP BY memes.id;"
 	rowsForMemes, err := db.Query("SELECT memes.id, username, meme_url, COUNT(meme_id) AS 'NumOfComments' FROM users JOIN (memes LEFT JOIN comments ON memes.id=comments.meme_id) ON users.id=memes.user_id WHERE is_public=1 GROUP BY memes.id;")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error1": err})
