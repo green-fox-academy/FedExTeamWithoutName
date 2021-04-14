@@ -9,7 +9,9 @@ import Main from './components/Main/Main';
 import NotFound from './components/NotFound/NotFound';
 import ForgottenPassword from './components/ForgottenPassword/forgottenPassword';
 import Upload from './components/Upload/Upload'
+
 const App = () => {
+
   return (
     <Router>
       <div className="App">

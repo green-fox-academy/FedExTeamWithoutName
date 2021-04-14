@@ -1,1 +1,2 @@
 export const PELDA_ACTION = 'PELDA_ACTION';
+export const SET_SHOW_MEME_DETAILS = 'SET_SHOW_MEME_DETAILS';
