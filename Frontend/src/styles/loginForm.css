@@ -181,6 +181,122 @@ a, a:hover, a:focus, a:active {
   animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
 }
 
+@media screen and (max-width: 880px) {
+  .loginBox {
+    margin-top: 10vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 300px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: white;
+  }
+  .loginForm {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-width: 493px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 400px;
+    -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+    animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+  }
+  .loginForm button {
+    color: whitesmoke !important;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 10px;
+    background-color: black;
+    border: 2px solid whitesmoke !important;
+    display: inline-block;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    margin: 2%;
+    font-weight: 800;
+    position: relative;
+    left: 35px;
+  }
+  .loginForm button:hover {
+    color: #000000 !important;
+    background: whitesmoke;
+    border-color: #000000 !important;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+  }
+  .loginForm .loginTitle {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin-left: 5%;
+    margin-bottom: 15%;
+    font-weight: 800;
+    border: 2px solid black;
+    text-transform: uppercase;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-bottom: 20px;
+    margin-left: 75px;
+  }
+  .loginForm input {
+    padding: 15px;
+    margin: 2%;
+    width: 50%;
+    position: relative;
+    left: 20px;
+    margin-left: 0;
+    width: 200px;
+  }
+  .loginForm .iconHolder {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: relative;
+    left: 20px;
+  }
+  .loginForm .iconHolder .icon {
+    width: 10px;
+  }
+  .loginFormImg {
+    display: none;
+    -webkit-animation: slide-in-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .forgottenPassword {
+    text-decoration: underline;
+    font-weight: 300;
+    font-size: 70%;
+    position: relative;
+    top: 320px;
+    left: -120px;
+    margin: 0;
+    margin-right: 20px;
+    -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+    animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+  }
+}
+
 @-webkit-keyframes slide-in-right {
   0% {
     -webkit-transform: translateX(600px);

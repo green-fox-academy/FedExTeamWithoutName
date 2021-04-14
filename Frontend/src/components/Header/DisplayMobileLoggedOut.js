@@ -20,7 +20,7 @@ const DisplayMobileLoggedOut = () => {
         <Dropdown.Menu>
           <Dropdown.Item>
             <div className="mobileButtonBox">
-              <Link to="/logout">
+              <Link to="/login">
                 <button
                   className="mobile-button"
                   type="button"
@@ -28,9 +28,9 @@ const DisplayMobileLoggedOut = () => {
                   SIGN IN
                 </button>
               </Link>
-              <Link to="/mymemes">
+              <Link to="/register">
                 <button className="mobile-button" type="button">
-                  SIGN OUT
+                  SIGN UP
                 </button>
               </Link>
             </div>
