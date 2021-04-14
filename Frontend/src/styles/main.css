@@ -1,0 +1,11 @@
+#main {
+  min-width: 450px;
+  border: solid #b3b3b3 2px;
+  padding: 20px;
+  margin: 50px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  background-color: #e4e4e4;
+}
+/*# sourceMappingURL=main.css.map */

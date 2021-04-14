@@ -8,7 +8,8 @@ import Login from './components/Login/Login';
 import Main from './components/Main/Main';
 import NotFound from './components/NotFound/NotFound';
 import ForgottenPassword from './components/ForgottenPassword/forgottenPassword';
-import Upload from './components/Upload/Upload'
+import Upload from './components/Upload/Upload';
+import MemeDetails from './components/MemeDetails/MemeDetails';
 
 const App = () => {
 
@@ -18,13 +19,14 @@ const App = () => {
         <Header />
         <Route exact path="/" component={RootRedirect} />
         <Switch>
-          <Route exact path="/main" component={Main} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/forgotten" component={ForgottenPassword} />
-          <Route exact path="/upload" component={Upload} />
+          <Route path="/main" component={Main} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/forgotten" component={ForgottenPassword} />
+          <Route path="/upload" component={Upload} />
           <Route path="*" component={NotFound} />
         </Switch>
+        <MemeDetails />
       </div>
     </Router>
   );

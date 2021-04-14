@@ -1,0 +1,21 @@
+#memeFeed {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+@media screen and (max-width: 1250px) {
+  #memeFeed {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  #memeFeed {
+    grid-template-columns: 1fr;
+  }
+}
