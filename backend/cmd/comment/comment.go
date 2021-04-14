@@ -37,7 +37,7 @@ func CreateComment(c *gin.Context) {
 		db := dbConn.DbConn()
 
 		var isMemeExists int
-		if err := db.QueryRow("SELECT EXISTS(SELECT 1 FROM comments WHERE meme_id = (?));", commentData.MemeId).Scan(&isMemeExists); err != nil {
+		if err := db.QueryRow("SELECT EXISTS(SELECT 1 FROM memes WHERE id = (?));", commentData.MemeId).Scan(&isMemeExists); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "database error11"})
 			return
 		}
