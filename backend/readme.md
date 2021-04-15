@@ -171,7 +171,7 @@ It returns with the following JSON in the body:
 }
  ```
 
-##### /switchfeedactivity (POST)
+##### /switchfeedactivity (PUT)
 /switchfeedactivity sets the meme status between public and private,
 so the meme is able to appear in the main feed or not.
 It gets the userid from the token sent in the header and verifies
