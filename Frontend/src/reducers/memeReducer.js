@@ -6,6 +6,9 @@ import {
   LOAD_ACTUAL_MEME,
   LOAD_ACTUAL_MEME_ERROR,
   UNLOAD_ACTUAL_MEME,
+  LOAD_POSTED_COMMENT,
+  LOAD_POSTED_REACTION,
+  SET_ISPUBLIC_ON_MEME,
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -78,6 +81,55 @@ function memeReducer(state = initialState, action) {
     return {
       ...state,
       actualMeme: initialState.actualMeme,
+    };
+  }
+  if (action.type === LOAD_POSTED_COMMENT) {
+    return {
+      ...state,
+      memeFeed: state.memeFeed.forEach(meme => {
+        if (meme.memeId === action.payload.memeId) {
+          meme.numberOfComments += 1;
+        }
+      }),
+      actualMeme: {
+        ...state.actualMeme,
+        comments: [
+          ...state.actualMeme.comments,
+          action.payload.comment,
+        ],
+      },
+    };
+  }
+  if (action.type === LOAD_POSTED_REACTION) {
+    return {
+      ...state,
+      memeFeed: state.memeFeed.forEach(meme => {
+        if (meme.memeId === action.payload.memeId) {
+          meme.reactions.forEach(reaction => {
+            if (reaction.reactionId === action.payload.reactionId) {
+              reaction.reactionCount += 1;
+            }
+          })
+        }
+      }),
+      actualMeme: {
+        ...state.actualMeme,
+        reactions: state.actualMeme.reactions.forEach(reaction => {
+          if (reaction.reactionId === action.payload.reactionId) {
+            reaction.reactionCount += 1;
+          }
+        })
+      },
+    };
+  }
+  if (action.type === SET_ISPUBLIC_ON_MEME) {
+    return {
+      ...state,
+      myMeme: state.myMeme.forEach(meme => {
+        if (meme.memeId === action.payload) {
+          meme.isPublic = !meme.isPublic;
+        }
+      }),
     };
   }
   return state;

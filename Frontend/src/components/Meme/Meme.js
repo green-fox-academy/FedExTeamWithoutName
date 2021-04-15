@@ -26,9 +26,6 @@ const Meme = ({
     setIconColor('white');
   };
 
-  const handleClickOnReaction = () => {
-  };
-
   const handleClick = async () => {
     // fetch ami lekéri ennek a memeID-nak a commentjeit
     try {
