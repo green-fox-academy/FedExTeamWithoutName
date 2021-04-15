@@ -1,16 +1,16 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { unloadActualMemeAction } from '../../actions/memeActions';
+import { unloadActualMemeAction, loadPostedCommentAction, loadPostedReactionAction, setIsPublicOnMemeAction } from '../../actions/memeActions';
 import { reactionIconDatabase } from '../../services'
 import '../../styles/memeDetails.css';
 import { fetchService } from '../../services';
 
 const MemeDetails = () => {
-  const { accessToken } = useSelector(state => state.userData);
+  const { accessToken, userName } = useSelector(state => state.userData);
   const [comment, setComment] = useState('');
   const [error, setError] = useState(null);
-  const { showMemeDetails, owner, memeUrl, reactions, numberOfComments, comments, isPublic, memeId } = useSelector(state => state.memeData.actualMeme);
+  const { showMemeDetails, owner, memeUrl, reactions, comments, isPublic, memeId } = useSelector(state => state.memeData.actualMeme);
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -25,7 +25,8 @@ const MemeDetails = () => {
   const handleSubmitOnPostComment = async submitEvent => {
     submitEvent.preventDefault();
     try {
-      const response = await fetchService.fetchData('comment', 'POST', { memeId, text: comment}, accessToken);
+      await fetchService.fetchData('comment', 'POST', { memeId, text: comment}, accessToken);
+      dispatch(loadPostedCommentAction({ memeId, comment: { username: userName, text: comment } }));
       setComment('');
     } catch (error) {
       console.log(error.message);
@@ -35,7 +36,8 @@ const MemeDetails = () => {
 
   const handleClickOnPostOnFeed = async () => {
     try {
-      const response = await fetchService.fetchData('switchfeedactivity', 'PUT', { memeId, trigger: 1 }, accessToken);
+      await fetchService.fetchData('switchfeedactivity', 'PUT', { memeId, trigger: 1 }, accessToken);
+      dispatch(setIsPublicOnMemeAction(memeId));
     } catch (error) {
       console.log(error.message);
       setError(error.message);
@@ -44,7 +46,8 @@ const MemeDetails = () => {
 
   const handleClickOnRemoveFromFeed = async () => {
     try {
-      const response = await fetchService.fetchData('switchfeedactivity', 'PUT', { memeId, trigger: 0 }, accessToken);
+      await fetchService.fetchData('switchfeedactivity', 'PUT', { memeId, trigger: 0 }, accessToken);
+      dispatch(setIsPublicOnMemeAction(memeId));
     } catch (error) {
       console.log(error.message);
       setError(error.message);
@@ -57,7 +60,8 @@ const MemeDetails = () => {
 
   const handleClickOnReaction = async clickEvent => {
     try {
-      const response = await fetchService.fetchData('modifyReactions', 'POST', { memeId, reactionId: Number(clickEvent.target.innerHTML) }, accessToken);
+      await fetchService.fetchData('modifyReactions', 'POST', { memeId, reactionId: Number(clickEvent.target.innerHTML) }, accessToken);
+      dispatch(loadPostedReactionAction({ memeId, reactionId: Number(clickEvent.target.innerHTML) }));
     } catch (error) {
       console.log(error.message);
       setError(error.message);
@@ -88,7 +92,7 @@ const MemeDetails = () => {
         <div id="memeDetails-background" onClick={handleClick} ref={memeDetailsRef}>
           <div id="memeDetails">
             <div id="memeDetails-left-side">
-              <div id="owner-text">{owner ? owner : isPublic ? 'Status: Public' : 'Status: Private'}</div>
+              <div id="owner-text">{owner ? owner : isPublic ? 'Status: Public' : 'Status: Private'}{error && (<div className="errormessage">{error}</div>)}</div>
               <div id="memeDetails-img-box">
                 <img src={memeUrl} alt="meme"/>
               </div>
@@ -102,7 +106,7 @@ const MemeDetails = () => {
               </div>
             </div>
             <div id="memeDetails-right-side">
-              <div id="number-of-comments">{numberOfComments} Comments</div>
+              <div id="number-of-comments">{comments.length} Comments</div>
               <div id="comments-box">
                 <div>Comments:</div>
                 <br/>

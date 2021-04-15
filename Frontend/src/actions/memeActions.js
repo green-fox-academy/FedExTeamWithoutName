@@ -6,6 +6,9 @@ import {
   LOAD_ACTUAL_MEME,
   LOAD_ACTUAL_MEME_ERROR,
   UNLOAD_ACTUAL_MEME,
+  LOAD_POSTED_COMMENT,
+  LOAD_POSTED_REACTION,
+  SET_ISPUBLIC_ON_MEME,
 } from '../constants/actionTypes';
 
 export function loadMemeFeedAction(payload) {
@@ -53,5 +56,26 @@ export function errorOnloadActualMemeAction(payload) {
 export function unloadActualMemeAction() {
   return {
     type: UNLOAD_ACTUAL_MEME,
+  };
+};
+
+export function loadPostedCommentAction(payload) {
+  return {
+    type: LOAD_POSTED_COMMENT,
+    payload
+  };
+};
+
+export function loadPostedReactionAction(payload) {
+  return {
+    type: LOAD_POSTED_REACTION,
+    payload
+  };
+};
+
+export function setIsPublicOnMemeAction(payload) {
+  return {
+    type: SET_ISPUBLIC_ON_MEME,
+    payload
   };
 };
