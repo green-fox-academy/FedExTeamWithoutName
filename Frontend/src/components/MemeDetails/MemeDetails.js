@@ -4,10 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { unloadActualMemeAction } from '../../actions/memeActions';
 import { reactionIconDatabase } from '../../services'
 import '../../styles/memeDetails.css';
+import { fetchService } from '../../services';
 
 const MemeDetails = () => {
+  const { accessToken } = useSelector(state => state.userData);
   const [comment, setComment] = useState('');
-  const { showMemeDetails, owner, memeUrl, reactions, numberOfComments, comments, isPublic } = useSelector(state => state.memeData.actualMeme);
+  const [error, setError] = useState(null);
+  const { showMemeDetails, owner, memeUrl, reactions, numberOfComments, comments, isPublic, memeId } = useSelector(state => state.memeData.actualMeme);
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -19,8 +22,15 @@ const MemeDetails = () => {
     }
   };
 
-  const handleSubmitOnPostComment = submitEvent => {
+  const handleSubmitOnPostComment = async submitEvent => {
     submitEvent.preventDefault();
+    try {
+      const response = await fetchService.fetchData('comment', 'POST', { memeId, text: comment}, accessToken);
+      setComment('');
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
   };
 
   const handleClickOnPostOnFeed = () => {
@@ -32,7 +42,13 @@ const MemeDetails = () => {
   const handleClickOnDeleteMeme = () => {
   };
 
-  const handleClickOnReaction = () => {
+  const handleClickOnReaction = async clickEvent => {
+    try {
+      const response = await fetchService.fetchData('modifyReactions', 'POST', { memeId, reactionId: Number(clickEvent.target.innerHTML) }, accessToken);
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
   };
 
   const keyPress = useCallback(
@@ -66,7 +82,7 @@ const MemeDetails = () => {
               <div id="reaction-box">
                 {reactions.map(({ reactionId, reactionCount }) => (
                   <div className="reaction-text" key={reactionId}>
-                    <img className="memeDetails-reaction-icon" src={reactionIconDatabase[reactionId]['white']} alt={reactionId} onClick={handleClickOnReaction}/>
+                    <div onClick={handleClickOnReaction}>{reactionId}</div>
                     <div>{reactionCount}</div> 
                   </div>
                 ))}
@@ -79,7 +95,7 @@ const MemeDetails = () => {
                 <br/>
                 {comments.map((comment, index) => (
                   <div key={index}>
-                    <div>{comment.userName}</div>
+                    <div>{comment.username}</div>
                     <div id="comment-text">{comment.text}</div>
                     <br/>
                   </div>
@@ -120,3 +136,5 @@ const MemeDetails = () => {
 };
 
 export default MemeDetails;
+
+//<img className="memeDetails-reaction-icon" src={reactionIconDatabase[reactionId]['white']} alt={reactionId} onClick={handleClickOnReaction}/>
