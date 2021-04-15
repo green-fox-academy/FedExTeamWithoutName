@@ -41,3 +41,52 @@
   display: flex;
   gap: 10px;
 }
+
+
+
+@media screen and (max-width: 750px) {
+  .meme {
+    background-color: black;
+    color: white;
+    font-size: 13px;
+    width: 330px;
+    height: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius:20px;
+  }
+  .meme:hover {
+   background-color:whitesmoke;
+   color:black;
+   outline:5px solid black;
+   #meme-img-box{
+     background-color:black;
+   }
+  }
+  
+  #meme-img-box {
+    align-self:center;
+    height: 270px;
+    width:max-content;
+    padding: 10px 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #meme-img-box img {
+    height: 100%;
+  }
+  
+  #meme-text-box {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #meme-reactions {
+    display: flex;
+    gap: 10px;
+  }
+}

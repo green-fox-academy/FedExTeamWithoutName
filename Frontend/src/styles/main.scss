@@ -6,3 +6,15 @@
   height: max-content;
   background-color: rgb(236, 236, 236);
 }
+
+
+@media screen and (max-width: 880px) {
+  #main {
+    min-width: 200px;
+    border: solid rgb(24, 24, 24) 5px;
+    padding: 5px;
+    margin: 0px;
+    height: max-content;
+    background-color: rgb(236, 236, 236);
+  }
+}
