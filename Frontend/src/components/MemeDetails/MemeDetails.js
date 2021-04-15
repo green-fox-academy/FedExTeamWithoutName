@@ -33,13 +33,26 @@ const MemeDetails = () => {
     }
   };
 
-  const handleClickOnPostOnFeed = () => {
+  const handleClickOnPostOnFeed = async () => {
+    try {
+      const response = await fetchService.fetchData('switchfeedactivity', 'PUT', { memeId, trigger: 1 }, accessToken);
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
   };
 
-  const handleClickOnRemoveFromFeed = () => {
+  const handleClickOnRemoveFromFeed = async () => {
+    try {
+      const response = await fetchService.fetchData('switchfeedactivity', 'PUT', { memeId, trigger: 0 }, accessToken);
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
   };
 
   const handleClickOnDeleteMeme = () => {
+    
   };
 
   const handleClickOnReaction = async clickEvent => {
