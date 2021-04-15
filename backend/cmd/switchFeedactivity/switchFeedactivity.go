@@ -29,7 +29,7 @@ func SwitchFeedActivity(c *gin.Context) {
 		}
 
 		if trigger.Trigger != 0 && trigger.Trigger != 1 {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Not authorized value in FeedActivity trigger."})
+			c.JSON(http.StatusBadRequest, gin.H{"message": "Not authorized value in FeedActivity trigger.", "error": err})
 			return
 		}
 

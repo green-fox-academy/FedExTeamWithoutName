@@ -11,6 +11,7 @@ import (
 	"meme/cmd/register"
 	"meme/cmd/switchFeedactivity"
 	"meme/cmd/verify"
+	"meme/modifyReactions"
 
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
@@ -31,5 +32,6 @@ func main() {
 	router.POST("/switchfeedactivity", switchFeedactivity.SwitchFeedActivity)
 	router.GET("/myfeed", myfeed.GetOwnMemes)
 	router.GET("/meme", meme.GetMeme)
+	router.POST("/modifyReactions", modifyReactions.ModifyReactions)
 	log.Fatal(router.Run(":8080"))
 }
