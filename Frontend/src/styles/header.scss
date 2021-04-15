@@ -3,7 +3,9 @@
 .header {
   background: black;
 box-shadow:$box-shadow-light;
-  height: 115px;
+  height: fit-content;
+  min-height:95px;
+  
 }
 .header-button {
   @include basicButton;
@@ -46,18 +48,18 @@ box-shadow:$box-shadow-light;
 position:absolute;
 left:5%;
 top:1%;
-border:3px solid white;
+outline:3px solid white;
 width:31vh;
 height:13vh;
 background-image:url("../assets/images/baselogo.png");
-background-size: cover;
+background-size: 95%;
     background-repeat:   no-repeat;
     background-position: center center;
     -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 .logoHolder:hover {
-  filter: drop-shadow(1px 1px 4px rgb(243, 230, 52));
+  box-shadow:0px 0px 0px 3px rgba(255, 255, 255, 0.795);
 }
 
 .lightbulb {
