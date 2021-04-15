@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Meme from '../Meme/Meme';
 import '../../styles/myMeme.css';
 import { sampleMemeData } from './sampleFetchMyMeme';
-import { loadMyMemeAction } from '../../actions/memeActions';
+import { loadMyMemeAction, errorOnLoadMyMemeAction } from '../../actions/memeActions';
+import { fetchService } from '../../services';
 
 const MyMeme = () => {
   const { myMeme } = useSelector(state => state.memeData);
   const dispatch = useDispatch();
+  const { accessToken } = useSelector(state => state.userData);
 
   useEffect(() => {
     getMyMeme();
@@ -16,10 +18,15 @@ const MyMeme = () => {
 
   const getMyMeme = async () => {
     // ezt majd fetchelésel kapjuk meg a szervertől
-    const fetchRespone = sampleMemeData;
-    // ezt majd fetchelésel kapjuk meg a szervertől
+    try {
+      const response = await fetchService.fetchData('myfeed', 'GET', null, accessToken);
+      console.log(response);
+      dispatch(loadMyMemeAction(response.memeData))
+    } catch (error) {
+      console.log(error.message);
+      dispatch(errorOnLoadMyMemeAction(error.message));
+    }
     
-    dispatch(loadMyMemeAction(fetchRespone));
   };
 
   return (

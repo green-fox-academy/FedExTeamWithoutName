@@ -6,7 +6,7 @@ import formImage from '../../assets/images/formImage.jpg'
 
 
 const Register = () => {
-  const [userName, setUserName] = useState('');
+  const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ const Register = () => {
   const handleSubmit = async submitEvent => {
     submitEvent.preventDefault();
     try {
-      const responseBody = await fetchService.fetchData('register', 'POST', { email, userName, password }, null);
+      const responseBody = await fetchService.fetchData('register', 'POST', { email, username, password }, null);
       console.log(responseBody);
       history.push('/login');
     } catch (error) {
@@ -49,7 +49,7 @@ const Register = () => {
             type="text"
             placeholder="Username"
             minLength="3"
-            value={userName}
+            value={username}
             onChange={changeEvent => {
               setUserName(changeEvent.target.value);
               setError(null);

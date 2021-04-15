@@ -9,6 +9,10 @@
   background-color: #ececec;
 }
 
+.memeFeedTitle {
+  font-size: 200%;
+}
+
 @media screen and (max-width: 880px) {
   #main {
     min-width: 200px;
