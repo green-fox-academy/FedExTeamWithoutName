@@ -34,7 +34,7 @@ const MemeFeed = () => {
     <>
     <h1 className="memeFeedTitle">MEME FEED</h1>
     <div id="memeFeed">
-      { loadMemeFeedStatus === 'ready' && memeFeed.map(({ comments, id: memeId, username: owner, memeUrl, reactions, numberOfComments }) => 
+      { loadMemeFeedStatus === 'ready' && memeFeed.map(({ id: memeId, username: owner, memeUrl, reactions, numberOfComments }) => 
         <Meme 
           //comments={comments}/* ezt a commentset majd ki kell törölni ha kész a commentsfetch a meme componensben*/ 
           key={memeId} 

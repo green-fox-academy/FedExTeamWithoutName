@@ -38,6 +38,7 @@ const MemeDetails = () => {
     try {
       await fetchService.fetchData('switchfeedactivity', 'PUT', { memeId, trigger: 1 }, accessToken);
       dispatch(setIsPublicOnMemeAction(memeId));
+      dispatch(unloadActualMemeAction());
     } catch (error) {
       console.log(error.message);
       setError(error.message);
@@ -48,6 +49,7 @@ const MemeDetails = () => {
     try {
       await fetchService.fetchData('switchfeedactivity', 'PUT', { memeId, trigger: 0 }, accessToken);
       dispatch(setIsPublicOnMemeAction(memeId));
+      dispatch(unloadActualMemeAction());
     } catch (error) {
       console.log(error.message);
       setError(error.message);

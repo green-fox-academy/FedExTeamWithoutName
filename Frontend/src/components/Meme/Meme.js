@@ -38,7 +38,7 @@ const Meme = ({
         memeUrl,
         reactions,
         numberOfComments,
-        comments: response.meme.comments,
+        comments: response.meme.comments || [],
         isPublic,
       }));
     } catch (error) {
