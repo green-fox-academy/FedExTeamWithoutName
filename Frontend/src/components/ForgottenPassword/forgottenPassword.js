@@ -40,7 +40,7 @@ const ForgottenPassword = () => {
             }}
           />
           </div>
-          {error && (<div>{error}</div>)}
+          {error && (<div className="errormessage">{error}</div>)}
           <button type="submit">SUBMIT</button>
         </form>
         <img className="registerFormImg" src={formImage} alt="Register Form" height="400px"></img>
