@@ -97,7 +97,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  min-width: 300px;
+  min-width: 450px;
 }
 
 #number-of-comments {
@@ -112,7 +112,12 @@
   overflow-y: auto;
   overflow-x: auto;
   border-radius: 5px;
-  min-width: 300px;
+  min-width: 4px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
 }
 
 #comment-text {
@@ -120,6 +125,11 @@
   border: solid 1px #b3b3b3;
   padding: 5px;
   border-radius: 8px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
 }
 
 #comment-form {
@@ -286,13 +296,23 @@
     border-radius: 5px;
     min-width: 300px;
     position: relative;
-    left: -8vw;
+    left: -30px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
   }
   #comment-text {
     background-color: #e4e4e4;
     border: solid 1px #b3b3b3;
     padding: 5px;
     border-radius: 8px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
   }
   #comment-form {
     display: -webkit-box;
@@ -311,7 +331,7 @@
     top: 3px;
     border-radius: 5px;
     position: relative;
-    left: -8vw;
+    left: -30px;
   }
   #comment-form button {
     color: whitesmoke !important;

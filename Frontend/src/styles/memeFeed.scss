@@ -7,7 +7,11 @@
   align-items: center;
   justify-items: center;
 }
-
+.memeFeedTitle {
+  font-weight:500;
+  margin-left:4%;
+  font-family: 'Eczar', serif;
+}
 @media screen and (max-width: 1250px) {
   #memeFeed {
     grid-template-columns: 1fr 1fr;

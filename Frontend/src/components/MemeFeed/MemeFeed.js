@@ -32,7 +32,7 @@ const MemeFeed = () => {
 
   return (
     <>
-    <h1>MEME FEED</h1>
+    <h1 className="memeFeedTitle">MEME FEED</h1>
     <div id="memeFeed">
       {memeFeed.map(({ comments, id: memeId, username: owner, memeUrl, reactions, numberOfComments }) => 
         <Meme 
