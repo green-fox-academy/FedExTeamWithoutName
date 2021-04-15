@@ -4,6 +4,7 @@ import (
 	"log"
 	"meme/cmd/comment"
 	"meme/cmd/create"
+	"meme/cmd/deleteMeme"
 	"meme/cmd/feed"
 	"meme/cmd/forgottenPass"
 	"meme/cmd/login"
@@ -28,10 +29,11 @@ func main() {
 	router.GET("/verify", verify.VerifyUserByEmail)
 	router.POST("/forgottenpass", forgottenPass.ForgottenPass)
 	router.POST("/meme", create.CreateMeme)
-	router.GET("/feed", feed.GetAllPublicMemes)
-	router.PUT("/switchfeedactivity", switchFeedactivity.SwitchFeedActivity)
-	router.GET("/myfeed", myfeed.GetOwnMemes)
 	router.GET("/meme", meme.GetMeme)
+	router.DELETE("/meme", deleteMeme.DeleteMeme)
+	router.GET("/feed", feed.GetAllPublicMemes)
+	router.GET("/myfeed", myfeed.GetOwnMemes)
+	router.PUT("/switchfeedactivity", switchFeedactivity.SwitchFeedActivity)
 	router.POST("/modifyReactions", modifyReactions.ModifyReactions)
 	router.POST("/comment", comment.CreateComment)
 	log.Fatal(router.Run(":8080"))
