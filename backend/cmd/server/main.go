@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"meme/cmd/comment"
 	"meme/cmd/create"
 	"meme/cmd/feed"
 	"meme/cmd/forgottenPass"
@@ -33,5 +34,6 @@ func main() {
 	router.GET("/myfeed", myfeed.GetOwnMemes)
 	router.GET("/meme", meme.GetMeme)
 	router.POST("/modifyReactions", modifyReactions.ModifyReactions)
+	router.POST("/comment", comment.CreateComment)
 	log.Fatal(router.Run(":8080"))
 }
