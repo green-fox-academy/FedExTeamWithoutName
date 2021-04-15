@@ -8,11 +8,11 @@ import (
 	"meme/cmd/forgottenPass"
 	"meme/cmd/login"
 	"meme/cmd/meme"
+	"meme/cmd/modifyReactions"
 	"meme/cmd/myfeed"
 	"meme/cmd/register"
 	"meme/cmd/switchFeedactivity"
 	"meme/cmd/verify"
-	"meme/modifyReactions"
 
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"

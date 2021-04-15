@@ -1,7 +1,6 @@
 package modifyReactions
 
 import (
-	"fmt"
 	"meme/cmd/dbConn"
 	"meme/internal/jwt"
 	"net/http"
@@ -47,8 +46,6 @@ func ModifyReactions(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"database - meme does not exist - check": err})
 		return
 	}
-	fmt.Println(memeExists)
-	fmt.Println(duplicationExists)
 
 	if duplicationExists == 1 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "You already have had this reaction on this meme."})
