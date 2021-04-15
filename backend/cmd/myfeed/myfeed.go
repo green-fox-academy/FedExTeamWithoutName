@@ -60,7 +60,6 @@ func GetOwnMemes(c *gin.Context) {
 			}
 
 			reactionDataArray = append(reactionDataArray, reactionData)
-			fmt.Println(reactionData)
 
 		}
 		err = rowsForReactions.Err()
@@ -85,7 +84,6 @@ func GetOwnMemes(c *gin.Context) {
 				}
 
 			}
-			fmt.Println(memeData)
 
 			allMemeData = append(allMemeData, memeData)
 		}

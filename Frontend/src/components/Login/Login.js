@@ -20,7 +20,6 @@ const Login = () => {
     submitEvent.preventDefault();
     try {
       const responseBody = await fetchService.fetchData('login', 'POST', { userName, password }, null);
-      // !!!!! ezt kell tovább adni az action-nek: { accessToken: accessToken, id: id, userName: userName } !!!!!
       dispatch(storeUserDataAction({ ...responseBody, userName }));
       console.log(responseBody);
       history.push('/main');

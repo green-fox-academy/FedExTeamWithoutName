@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { loadActualMemeAction, /*errorOnloadActualMemeAction*/ } from '../../actions/memeActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadActualMemeAction, errorOnloadActualMemeAction } from '../../actions/memeActions';
 import { reactionIconDatabase } from '../../services'
 import '../../styles/meme.css';
-/*import { fetchService } from '../../services';*/
+import { fetchService } from '../../services';
 
 const Meme = ({ 
-    comments, /* ezt a commentset majd ki kell törölni ha kész a commentsfetch a meme componensben*/
+    //comments, /* ezt a commentset majd ki kell törölni ha kész a commentsfetch a meme componensben*/
     className,
     memeId, 
     owner, 
@@ -17,7 +17,7 @@ const Meme = ({
   }) => {
   const [iconColor, setIconColor] = useState('white')
   const dispatch = useDispatch();
-
+  const { accessToken } = useSelector(state => state.userData);
   const handleOnMouseEnter = () => {
     setIconColor('black');
   };
@@ -29,35 +29,25 @@ const Meme = ({
   const handleClickOnReaction = () => {
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // fetch ami lekéri ennek a memeID-nak a commentjeit
-    // try {
-    //   const response = await fetchService.fetchData('valamipath', 'GET', null, accessToken);
-    //   dispatch(loadActualMemeAction({
-    //     showMemeDetails: true,
-    //     memeId,
-    //     owner,
-    //     memeUrl,
-    //     reactions,
-    //     numberOfComments,
-    //     comments: response,
-    //     isPublic,
-    //   }));
-        const responseFetchCommentsByMemeId = comments;
-        dispatch(loadActualMemeAction({
-          showMemeDetails: true,
-          memeId,
-          owner,
-          memeUrl,
-          reactions,
-          numberOfComments,
-          comments: responseFetchCommentsByMemeId,
-          isPublic,
-        }));
-    // } catch (error) {
-    //   console.log(error.message);
-    //   dispatch(errorOnloadActualMemeAction(error.message));
-    // }
+    try {
+      const response = await fetchService.fetchData(`meme?id=${memeId}`, 'GET', null, accessToken);
+      console.log(response);
+      dispatch(loadActualMemeAction({
+        showMemeDetails: true,
+        memeId,
+        owner,
+        memeUrl,
+        reactions,
+        numberOfComments,
+        comments: response.meme.comments,
+        isPublic,
+      }));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(errorOnloadActualMemeAction(error.message));
+    }
     // fetch ami lekéri ennek a memeID-nak a commentjeit
   };
 
@@ -69,7 +59,7 @@ const Meme = ({
       <div id="meme-text-box">
         <div id="meme-reactions">
           {reactions.map(({ reactionId, reactionCount }) => (
-            <div className="meme-reaction-text" key={reactionId}><img className="reaction-icon" src={reactionIconDatabase[reactionId][iconColor]} alt={reactionId} onClick={handleClickOnReaction}/>{reactionCount}</div>
+            <div className="meme-reaction-text" key={reactionId}>{reactionCount}</div>
           ))}
         </div>
         <div id="meme-comments">
@@ -81,3 +71,5 @@ const Meme = ({
 };
 
 export default Meme;
+
+//<img className="reaction-icon" src={reactionIconDatabase[reactionId][iconColor]} alt={reactionId} onClick={handleClickOnReaction}/>
