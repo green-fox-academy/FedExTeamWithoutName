@@ -8,4 +8,17 @@
   height: max-content;
   background-color: #ececec;
 }
+
+@media screen and (max-width: 880px) {
+  #main {
+    min-width: 200px;
+    border: solid #181818 5px;
+    padding: 5px;
+    margin: 0px;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    background-color: #ececec;
+  }
+}
 /*# sourceMappingURL=main.css.map */
