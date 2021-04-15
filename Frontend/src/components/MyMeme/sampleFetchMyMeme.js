@@ -3,8 +3,8 @@ import imageUrl from '../../assets/images/meme-sample.png';
 export const sampleMemeData = [
   {
     id: 1,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 1,
     reactions: [
       {
         reactionId: 1,
@@ -64,8 +64,8 @@ export const sampleMemeData = [
   },
   {
     id: 2,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 1,
     reactions: [
       {
         reactionId: 1,
@@ -125,8 +125,8 @@ export const sampleMemeData = [
   },
   {
     id: 3,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 1,
     reactions: [
       {
         reactionId: 1,
@@ -186,8 +186,8 @@ export const sampleMemeData = [
   },
   {
     id: 4,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 1,
     reactions: [
       {
         reactionId: 1,
@@ -247,8 +247,8 @@ export const sampleMemeData = [
   },
   {
     id: 5,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 1,
     reactions: [
       {
         reactionId: 1,
@@ -308,8 +308,8 @@ export const sampleMemeData = [
   },
   {
     id: 6,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 0,
     reactions: [
       {
         reactionId: 1,
@@ -369,8 +369,8 @@ export const sampleMemeData = [
   },
   {
     id: 7,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 0,
     reactions: [
       {
         reactionId: 1,
@@ -430,8 +430,8 @@ export const sampleMemeData = [
   },
   {
     id: 8,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 0,
     reactions: [
       {
         reactionId: 1,
@@ -491,8 +491,8 @@ export const sampleMemeData = [
   },
   {
     id: 9,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 0,
     reactions: [
       {
         reactionId: 1,
@@ -552,8 +552,8 @@ export const sampleMemeData = [
   },
   {
     id: 10,
-    username: 'Petike',
     memeUrl: imageUrl,
+    isPublic: 0,
     reactions: [
       {
         reactionId: 1,

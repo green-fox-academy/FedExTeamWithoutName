@@ -4,7 +4,7 @@ import HeaderWhenLoggedIn from './HeaderWhenLoggedIn';
 import '../../styles/header.css';
 
 const Header = () => {
-  const accessToken = false;
+  const accessToken = true;
 
   return accessToken ? <div className="header"><HeaderWhenLoggedIn /></div> : <div className="header"><HeaderWhenNotLoggedIn /></div>;
 };
