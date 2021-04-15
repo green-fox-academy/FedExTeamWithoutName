@@ -34,6 +34,11 @@ func CreateComment(c *gin.Context) {
 			return
 		}
 
+		if len(commentData.CommentText) == 0 {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Please write a comment."})
+			return
+		}
+
 		db := dbConn.DbConn()
 
 		var isMemeExists int

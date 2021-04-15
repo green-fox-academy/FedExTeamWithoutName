@@ -21,7 +21,7 @@ const MyMeme = () => {
     try {
       const response = await fetchService.fetchData('myfeed', 'GET', null, accessToken);
       console.log(response);
-      dispatch(loadMyMemeAction(response.memeData))
+      dispatch(loadMyMemeAction(response.memeData || []))
     } catch (error) {
       console.log(error.message);
       dispatch(errorOnLoadMyMemeAction(error.message));

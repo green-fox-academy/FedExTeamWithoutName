@@ -38,7 +38,7 @@ const Meme = ({
         memeUrl,
         reactions,
         numberOfComments,
-        comments: response.meme.comments,
+        comments: response.meme.comments || [],
         isPublic,
       }));
     } catch (error) {
@@ -55,9 +55,16 @@ const Meme = ({
       </div>
       <div id="meme-text-box">
         <div id="meme-reactions">
-          {reactions.map(({ reactionId, reactionCount }) => (
-            <div className="meme-reaction-text" key={reactionId}>{reactionCount}</div>
-          ))}
+         
+           {Object.keys(reactionIconDatabase).map(reactionIconId => (
+                  <div className="meme-reaction-text" key={reactionIconId}>
+                    <img className="memeDetails-reaction-icon" src={reactionIconDatabase[reactionIconId][iconColor]} alt={reactionIconId}/>
+                    {reactions.map(({ reactionId, reactionCount }) => reactionIconId == reactionId 
+                      && (<div>{reactionCount}</div>) 
+                    )}
+                  {!(reactions.filter(({ reactionId }) => reactionIconId == reactionId).length) && (<div>{0}</div>)}
+                  </div>
+                ))}
         </div>
         <div id="meme-comments">
           {numberOfComments} Comments

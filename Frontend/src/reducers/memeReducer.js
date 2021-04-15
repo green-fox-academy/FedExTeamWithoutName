@@ -86,10 +86,11 @@ function memeReducer(state = initialState, action) {
   if (action.type === LOAD_POSTED_COMMENT) {
     return {
       ...state,
-      memeFeed: state.memeFeed.forEach(meme => {
-        if (meme.memeId === action.payload.memeId) {
+      memeFeed: state.memeFeed.map(meme => {
+        if (meme.id === action.payload.memeId) {
           meme.numberOfComments += 1;
         }
+        return meme
       }),
       actualMeme: {
         ...state.actualMeme,
@@ -103,32 +104,33 @@ function memeReducer(state = initialState, action) {
   if (action.type === LOAD_POSTED_REACTION) {
     return {
       ...state,
-      memeFeed: state.memeFeed.forEach(meme => {
-        if (meme.memeId === action.payload.memeId) {
-          meme.reactions.forEach(reaction => {
+      memeFeed: state.memeFeed.map(meme => {
+        if (meme.id === action.payload.memeId) {
+          meme.reactions.map(reaction => {
             if (reaction.reactionId === action.payload.reactionId) {
               reaction.reactionCount += 1;
             }
+            return reaction
           })
+          !(meme.reactions.filter(reaction => reaction.reactionId === action.payload.reactionId).length) && meme.reactions.push({memeId: action.payload.memeId, reactionId: action.payload.reactionId, reactionCount: 1})
         }
+        return meme
       }),
-      actualMeme: {
-        ...state.actualMeme,
-        reactions: state.actualMeme.reactions.forEach(reaction => {
-          if (reaction.reactionId === action.payload.reactionId) {
-            reaction.reactionCount += 1;
-          }
-        })
-      },
+      
     };
   }
   if (action.type === SET_ISPUBLIC_ON_MEME) {
     return {
       ...state,
-      myMeme: state.myMeme.forEach(meme => {
-        if (meme.memeId === action.payload) {
-          meme.isPublic = !meme.isPublic;
+      myMeme: state.myMeme.map(meme => {
+        if (meme.id === action.payload) {
+          if (!meme.isPublic) {
+            meme.isPublic = 1;
+          } else {
+            meme.isPublic = 0;
+          }
         }
+        return meme
       }),
     };
   }
