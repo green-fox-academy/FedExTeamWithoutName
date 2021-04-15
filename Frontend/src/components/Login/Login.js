@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { fetchService } from '../../services';
 import { Link } from 'react-router-dom';
+import { storeUserDataAction } from '../../actions/userActions';
 import formImage from '../../assets/images/formImage.jpg'
 import '../../styles/loginForm.css';
 
@@ -10,6 +12,7 @@ const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
   const history = useHistory();
 
 
@@ -17,6 +20,8 @@ const Login = () => {
     submitEvent.preventDefault();
     try {
       const responseBody = await fetchService.fetchData('login', 'POST', { userName, password }, null);
+      // !!!!! ezt kell tovább adni az action-nek: { accessToken: accessToken, id: id, userName: userName } !!!!!
+      dispatch(storeUserDataAction({ ...responseBody, userName }));
       console.log(responseBody);
       history.push('/main');
     } catch (error) {

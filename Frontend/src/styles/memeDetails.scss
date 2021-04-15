@@ -43,7 +43,7 @@
   gap: 20px;
 }
 
-#memeDetails-left-side img {
+#memeDetails-img-box img {
   height: 100%;
 }
 
@@ -55,6 +55,13 @@
 
 .reaction-text {
   color:white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.memeDetails-reaction-icon {
+  height: 25px;
 }
 
 #memeDetails-right-side {
@@ -100,7 +107,7 @@
   border-radius:5px;
 }
 
-#comment-form button {
+#memeDetails button {
   @include basicButton;
   width: fit-content;
   align-self: flex-end;
@@ -109,11 +116,19 @@
   top: 5px;
   left: 10px;
 }
-#comment-form button:hover {
+
+#memeDetails button:hover {
   @include basicButtonHover;
 }
-#comment-form button:focus {
+
+#memeDetails button:focus {
   @include basicButtonActive;
+}
+
+#myMemeDetails-button-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 35px;
 }
 
 @media screen and (max-width: 880px) {

@@ -1,11 +1,14 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeTokenAction } from '../../actions/userActions';
 import lightbulb from '../../assets/images/lightbulb.png';
 
 const DisplayMobile = () => {
+  const dispatch = useDispatch();
   const handleLogOut = () => {
-    console.log('remove token');
+    dispatch(removeTokenAction());
   };
 
   return (
@@ -32,7 +35,7 @@ const DisplayMobile = () => {
                   Log Out
                 </button>
               </Link>
-              <Link to="/mymemes">
+              <Link to="/main/mymeme">
                 <button className="mobile-button" type="button">
                   My memes
                 </button>

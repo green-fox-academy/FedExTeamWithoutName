@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeTokenAction } from '../../actions/userActions';
 import HeaderButton from './HeaderButton';
 import lightbulb from '../../assets/images/lightbulb.png';
 
 const DisplayDesktop = () => {
+  const dispatch = useDispatch();
   const handleLogOut = () => {
-    console.log('remove token');
+    dispatch(removeTokenAction());
   };
 
   return (
@@ -16,7 +19,7 @@ const DisplayDesktop = () => {
       </Link>
       <div id="header-logged-in-button-box">
         <HeaderButton path="/create" innerText="Create MEME" />
-        <HeaderButton path="/mymemes" innerText="My memes" />
+        <HeaderButton path="/main/mymeme" innerText="My memes" />
         <HeaderButton
           path="/"
           innerText="Log out"

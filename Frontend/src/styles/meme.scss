@@ -1,4 +1,4 @@
-.meme {
+.meme, .mymeme0, .mymeme1 {
   background-color: black;
   color: white;
   font-size: 13px;
@@ -9,10 +9,27 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 .meme:hover {
  background-color:whitesmoke;
  color:black;
  outline:5px solid black;
+ #meme-img-box{
+   background-color:black;
+ }
+}
+
+.mymeme0 {
+  outline:5px solid rgb(190, 121, 121);
+}
+
+.mymeme1 {
+  outline:5px solid rgb(133, 190, 121);
+}
+
+.mymeme0:hover, .mymeme1:hover {
+ background-color:whitesmoke;
+ color:black;
  #meme-img-box{
    background-color:black;
  }
@@ -42,7 +59,15 @@
   gap: 10px;
 }
 
+.meme-reaction-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.reaction-icon {
+  height: 20px;
+}
 
 @media screen and (max-width: 750px) {
   .meme {
