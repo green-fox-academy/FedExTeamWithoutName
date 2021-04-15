@@ -69,7 +69,7 @@ const Register = () => {
               setError(null);
             }}
           /></div>
-          {error && (<div>{error}</div>)}
+          {error && (<div className="errormessage">{error}</div>)}
           <button type="submit">SIGN UP</button>
         </form>
         <img className="registerFormImg" src={formImage} alt="Register Form"></img>
