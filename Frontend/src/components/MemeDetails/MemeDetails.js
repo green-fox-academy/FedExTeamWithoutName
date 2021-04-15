@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { unloadActualMemeAction, loadPostedCommentAction, loadPostedReactionAction, setIsPublicOnMemeAction } from '../../actions/memeActions';
+import { unloadActualMemeAction, loadPostedCommentAction, loadPostedReactionAction, setIsPublicOnMemeAction, loadMemeFeedAction, loadMyMemeAction } from '../../actions/memeActions';
 import { reactionIconDatabase } from '../../services'
 import '../../styles/memeDetails.css';
 import { fetchService } from '../../services';
@@ -11,6 +11,7 @@ const MemeDetails = () => {
   const [comment, setComment] = useState('');
   const [error, setError] = useState(null);
   const { showMemeDetails, owner, memeUrl, reactions, comments, isPublic, memeId } = useSelector(state => state.memeData.actualMeme);
+  const { myMeme, memeFeed } = useSelector(state => state.memeData)
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -56,14 +57,25 @@ const MemeDetails = () => {
     }
   };
 
-  const handleClickOnDeleteMeme = () => {
-    
+  const handleClickOnDeleteMeme = async () => {
+    try {
+      await fetchService.fetchData('meme', 'DELETE', { memeId }, accessToken);
+      const newMemeFeed = memeFeed.filter(meme => meme.id != memeId);
+      const newMyMeme = myMeme.filter(meme => meme.id != memeId);
+      dispatch(loadMemeFeedAction(newMemeFeed));
+      dispatch(loadMyMemeAction(newMyMeme));
+      dispatch(unloadActualMemeAction());
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
   };
 
   const handleClickOnReaction = async clickEvent => {
     try {
-      await fetchService.fetchData('modifyReactions', 'POST', { memeId, reactionId: Number(clickEvent.target.innerHTML) }, accessToken);
-      dispatch(loadPostedReactionAction({ memeId, reactionId: Number(clickEvent.target.innerHTML) }));
+      await fetchService.fetchData('modifyReactions', 'POST', { memeId, reactionId: Number(clickEvent.target.alt) }, accessToken);
+      dispatch(loadPostedReactionAction({ memeId, reactionId: Number(clickEvent.target.alt) }));
+      dispatch(unloadActualMemeAction());
     } catch (error) {
       console.log(error.message);
       setError(error.message);
@@ -99,10 +111,13 @@ const MemeDetails = () => {
                 <img src={memeUrl} alt="meme"/>
               </div>
               <div id="reaction-box">
-                {reactions.map(({ reactionId, reactionCount }) => (
-                  <div className="reaction-text" key={reactionId}>
-                    <div onClick={handleClickOnReaction}>{reactionId}</div>
-                    <div>{reactionCount}</div> 
+                {Object.keys(reactionIconDatabase).map(reactionIconId => (
+                  <div className="reaction-text" key={reactionIconId}>
+                    <img className="memeDetails-reaction-icon" src={reactionIconDatabase[reactionIconId]['white']} alt={reactionIconId} onClick={handleClickOnReaction}/>
+                    {reactions.map(({ reactionId, reactionCount }) => reactionIconId == reactionId 
+                      && (<div>{reactionCount}</div>) 
+                    )}
+                  {!(reactions.filter(({ reactionId }) => reactionIconId == reactionId).length) && (<div>{0}</div>)}
                   </div>
                 ))}
               </div>
@@ -157,3 +172,9 @@ const MemeDetails = () => {
 export default MemeDetails;
 
 //<img className="memeDetails-reaction-icon" src={reactionIconDatabase[reactionId]['white']} alt={reactionId} onClick={handleClickOnReaction}/>
+// reactions.map(({ reactionId, reactionCount }) => (
+//   <div className="reaction-text" key={reactionId}>
+//     <div onClick={handleClickOnReaction}>{reactionId}</div>
+//     <div>{reactionCount}</div> 
+//   </div>
+// ))

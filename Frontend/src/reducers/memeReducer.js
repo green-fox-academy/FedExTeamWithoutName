@@ -112,18 +112,11 @@ function memeReducer(state = initialState, action) {
             }
             return reaction
           })
+          !(meme.reactions.filter(reaction => reaction.reactionId === action.payload.reactionId).length) && meme.reactions.push({memeId: action.payload.memeId, reactionId: action.payload.reactionId, reactionCount: 1})
         }
         return meme
       }),
-      // actualMeme: {
-      //   ...state.actualMeme,
-      //   reactions: state.actualMeme.reactions.map(reaction => {
-      //     if (reaction.reactionId === action.payload.reactionId) {
-      //       reaction.reactionCount += 1;
-      //     }
-      //     return reaction
-      //   })
-      // },
+      
     };
   }
   if (action.type === SET_ISPUBLIC_ON_MEME) {
