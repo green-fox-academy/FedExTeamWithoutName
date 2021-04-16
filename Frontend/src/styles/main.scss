@@ -1,3 +1,7 @@
+@import './presets';
+@import './variables';
+@import './globals';
+
 #main {
   min-width: 450px;
   border: solid rgb(24, 24, 24) 5px;
@@ -9,6 +13,59 @@
 
 .memeFeedTitle {
   font-size:200%;
+}
+.memeImgHolder {
+ border:15px solid black;
+ width:fit-content;
+ height:fit-content;
+}
+
+.inputHolder {
+  display:flex;
+  flex-direction: column;
+  width: 40%;
+  gap:15px;
+  width: 300px;
+  margin-left:100px;
+
+  input{
+    width:80%;
+    align-self:center;
+  }
+}
+.templatescontainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
+  align-items: center;
+  justify-items: center;
+}
+.memeform {
+  display:flex;
+  justify-content: center;
+  align-items:center;
+}
+.createdmemebox {
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+}
+.creatememebutton {
+@include basicButton;
+}
+
+.creatememebutton:hover {
+  @include basicButtonHover;
+}
+
+.addtomymemes {
+  @include basicButton;
+}
+
+.addtomymemes:hover {
+  @include basicButtonHover;
 }
 
 @media screen and (max-width: 880px) {
