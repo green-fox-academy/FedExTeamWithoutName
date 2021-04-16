@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { MemeCard } from "./memeCard";
+import { fetchService } from '../../services';
 
 const objectToQueryParam = obj => {
   const params = Object.entries(obj).map(([key, value]) => `${key}=${value}`);
@@ -7,11 +10,14 @@ const objectToQueryParam = obj => {
 };
 
 const MemeGenerator = () => {
+  const { accessToken } = useSelector(state => state.userData);
   const [templates, setTemplates] = useState([]);
   const [template, setTemplate] = useState(null);
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
   const [meme, setMeme] = useState(null);
+  const [error, setError] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes").then(x =>
@@ -19,11 +25,22 @@ const MemeGenerator = () => {
     );
   }, []);
 
+  const handleClick = async () => {
+    try {
+      await fetchService.fetchData('meme', 'POST', { memeurl: meme }, accessToken);
+      history.push('/main/mymeme');
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
+  };
+
   if (meme) {
     return (
       <div className="createdmemebox" style={{ textAlign: "center" }}>
         <img style={{ width: 200 }} src={meme} alt="custom meme" />
-      <button className="addtomymemes">ADD TO MY MEMES</button>
+        {error && (<div className="errormessage">{error}</div>)}
+        <button className="addtomymemes" onClick={handleClick}>ADD TO MY MEMES</button>
       </div>
       
     );
