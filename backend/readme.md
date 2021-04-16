@@ -1,4 +1,4 @@
-# meme project backend
+# MemeOnTheGo Backend
 
 ### How to run
 
@@ -32,11 +32,11 @@ go mod tidy
  - The project root directory should be in your $GOPATH/src/ directory
 
 
-### Endpoints
+## Endpoints
 
-##### /meme (GET)
-/meme endpoint gives back the detailed data of a given name.
-It is waiting for an id for the meme:
+### /meme (GET)
+/meme endpoint gives back the detailed data of a given meme.
+It is waiting for the id of the meme:
 
  ```
 http://localhost:8080/meme?id=2
@@ -58,7 +58,7 @@ and returns with the following JSON in the body:
   }
 }
  ```
-##### /register (POST)
+### /register (POST)
 /register endpoint is used with POST method and waiting for 
 an email, a username and a password in a JSON incorporated 
 in the body:
@@ -76,7 +76,7 @@ and returns with the following JSON in the body:
     "username": userResult.Username}
  ```
 and sends a validation email on the given email address(user@email.com)
-with a link to the /verify endpoint, which contains a verification token.
+via MailGun with a link to the /verify endpoint, which contains a verification token.
 
 ### /verify (GET)
 /verify endpoint receives the request from the link sent to the given
@@ -90,9 +90,9 @@ It returns with the following JSON in the body:
 {"message": "ok"}
  ```
 
-##### /login (POST)
+### /login (POST)
 /login endpoint is used with POST method and waiting for 
-a username nad a password in a JSON incorporated in the body:
+a username and a password in a JSON incorporated in the body:
  ```
 {
     "userName": "user",
@@ -106,18 +106,15 @@ and returns with the following JSON in the body:
 "userId": id }
  ```
 
-##### /forgottenPass (POST)
+### /forgottenPass (POST)
 /forgottenPass creates a randomly generated string as a new password 
-in case the user forgets the previous one. It needsa username and the 
-email address given at the registration.
-It verifies, whether the email exists both in general and in the data-
-base. If the verification is successful sends a personalized message 
+in case the user forgets the previous one. It needs the email address given at registration.
+It verifies, whether the email exists both in general and in the database. If the verification is successful, it sends a personalized message 
 to the user with the new password to the given email address
 
 It is waiting for the following JSON incorporated into the body:
  ```
 {
-    "userName": "user",
     "email": "email",
 }
  ```
@@ -126,7 +123,7 @@ and returns with the following JSON in the body:
 {"message": "Your password has been reset, you can find your new password in the email sent to " + email}
  ```
 
-##### /feed (GET)
+### /feed (GET)
 /feed sends back the data of all the public memes that appear in
 the main feed. For this there is no need to login.
 
@@ -171,7 +168,7 @@ It returns with the following JSON in the body:
 }
  ```
 
-##### /switchfeedactivity (PUT)
+### /switchfeedactivity (PUT)
 /switchfeedactivity sets the meme status between public and private,
 so the meme is able to appear in the main feed or not.
 It gets the userid from the token sent in the header and verifies
@@ -191,7 +188,7 @@ It returns with the following JSON in the body:
     }
  ```
 
-##### /myfeed (GET)
+### /myfeed (GET)
 /myfeed sends back the data of all own memes made by a user to 
 appear in a private feed.
 
@@ -219,10 +216,9 @@ It returns with the following JSON in the body:
 }
  ```
 
-##### /meme (POST)
+### /meme (POST)
 /meme with the POST method saves a meme's URL into the database.
-It gets the userid from the token sent in the header and authenti-
-cates the sender.
+It gets the userid from the token sent in the header and authenticates the sender.
 
 It is waiting for a JSON in the body with the meme's URL:
  ```
@@ -233,13 +229,13 @@ It returns with the following JSON in the body:
 {"message": "ok"}
  ```
 
-##### /modifyReactions (POST)
-/modifiyReactions increases the database value of a reaction at a meme.
+### /modifyReactions (POST)
+/modifiyReactions inserts a new reaction into the reactions table of the database.
 
 It gets the userid from the token sent in the header and authenticates 
 the sender.
-Since a user is allowed use one type of reaction only once per meme, the
-endpoints checks the database, whether such a reaction already exists.
+Since a user is allowed to use one type of reaction only once per meme, the
+endpoints checks the database, whether such a reaction already exists by the user for that meme.
 Also checks that the given meme exists in the database. 
 
 It is waiting for a JSON in the body with the meme's URL:
@@ -253,7 +249,7 @@ It returns with the following JSON in the body:
 {"message": "ok"}
  ```
 
-##### /comment (POST)
+### /comment (POST)
 /comment saves the comments into the database.
 Validates the length of a string (max. 140 characters), and checks
 whether the comment is an empty string.
