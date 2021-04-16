@@ -40,7 +40,7 @@ const DisplayMobile = () => {
                   My memes
                 </button>
               </Link>
-              <Link to="/">
+              <Link to="/main/newgenerator">
                 <button className="mobile-button" type="button">
                   Create Meme
                 </button>

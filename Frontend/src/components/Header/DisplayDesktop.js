@@ -18,7 +18,7 @@ const DisplayDesktop = () => {
         </div>
       </Link>
       <div id="header-logged-in-button-box">
-        <HeaderButton path="/create" innerText="Create MEME" />
+        <HeaderButton path="/main/newgenerator" innerText="Create MEME" />
         <HeaderButton path="/main/mymeme" innerText="My memes" />
         <HeaderButton
           path="/"
