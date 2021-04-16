@@ -37,7 +37,7 @@ func CreateMeme(c *gin.Context) {
 
 		insData, err := db.Prepare("INSERT INTO memes (meme_url, user_id) VALUES (?,?);")
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "database error2"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err})
 			return
 		}
 

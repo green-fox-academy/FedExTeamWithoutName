@@ -72,11 +72,13 @@ const MemeGenerator = () => {
           <div className="inputHolder">
           <input
             placeholder="top text"
+            required
             value={topText}
             onChange={e => setTopText(e.target.value)}
           />
           <input
             placeholder="bottom text"
+            required
             value={bottomText}
             onChange={e => setBottomText(e.target.value)}
           />
